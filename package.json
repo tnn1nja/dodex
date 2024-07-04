@@ -1,0 +1,19 @@
+{
+  "name": "dodex",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [],
+  "author": "tnn1nja",
+  "license": "ISC",
+  "description": "A beautified index of every Doctor Who story listed in a word document.",
+  "devDependencies": {
+    "electron": "^31.1.0",
+    "electron-find": "^1.0.7"
+  },
+  "dependencies": {
+    "mammoth": "^1.8.0"
+  }
+}
