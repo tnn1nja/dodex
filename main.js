@@ -46,11 +46,13 @@ function formatOutput(input){
     .replaceAll("</h1>", "</h1>\n")                         //Add \n before <h1>
     .replaceAll("<ol>", "\n<ol>")                           //Add \n before <ol>
     .replaceAll("<li>", "\n<li>")                           //Add \n before <li>
+    .replaceAll("</h2>", "</h2>\n")                         //Add \n after <h2>
     .replaceAll("><h1>", ">\n<h1>")                         //Add \n before <h1> (other than the first one)
-    .replaceAll("</ol>", "\n</ol>\n")                        //Add \n either side of </ol>
+    .replaceAll("><h2>", ">\n<h2>")                         //Add \n before second <h2>
+    .replaceAll("</ol>", "\n</ol>\n")                       //Add \n either side of </ol>
     .replaceAll(/[^>]*$/gm, "\n$&")                         //Add \n before loose text (and one to everything)
     .replaceAll(/\n+/g, "\n")                               //Removes blank lines
-    .replaceAll(/^[^<].*/gm, "<p>$&</p>")                  //add a <p> tags to all lines that have no tags
+    .replaceAll(/^[^<].*/gm, "<p>$&</p>")                   //add a <p> tags to all lines that have no tags
     
     //Add Doctor Tags
     .replace("<h1>Second Doctor</h1>", "<h1 id=\"two\">Second Doctor</h1>")
@@ -119,6 +121,7 @@ function produceTable(input){
             }else{
                 output += "</table><br>" + contenttable + tr + "<td>\n" + element + "\n</td></tr>\n";
             }
+
         }else if(element == ""){
             //pass
         }else{
