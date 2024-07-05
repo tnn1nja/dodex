@@ -29,7 +29,7 @@ app.prependListener("window-all-closed", () => {app.quit();});
 
 //Extract From Word Document
 function createHtml(){
-    mammoth.convertToHtml({path: "../.indices/Main Index.docx"})
+    mammoth.convertToHtml({path: "../.indices/main.docx"})
         .then(function(result){
             formatOutput(result.value);
             app.whenReady().then(createWindow);
@@ -66,9 +66,10 @@ function formatOutput(input){
     .replace("<h1>Ninth Doctor</h1>", "<h1 id=\"nine\">Ninth Doctor</h1>")
     .replace("<h1>Tenth Doctor</h1>", "<h1 id=\"ten\">Tenth Doctor</h1>")
     .replace("<h1>Eleventh Doctor</h1>", "<h1 id=\"eleven\">Eleventh Doctor</h1>")
-    .replace("<h1>Twelfth Doctor</h1>", "<h1 id=\"twelve\">Twelfth Doctor</h1>");
+    .replace("<h1>Twelfth Doctor</h1>", "<h1 id=\"twelve\">Twelfth Doctor</h1>")
+    .replace("<h1>Doctorless</h1>", "<h1 id=\"more\">Doctorless</h1>")
     
-    //fs.writeFileSync("parse.html", output);
+    fs.writeFileSync("parse.html", output);
     table = produceTable(output.split("\n"));
     start = fs.readFileSync("templates/start.html");
     end = fs.readFileSync("templates/end.html");
@@ -110,7 +111,7 @@ function produceTable(input){
                 tr += "purple.png\">";
             }else if(element.includes("Fifth") || element.includes("Tenth")){
                 tr += "green.png\">";
-            }else if(element.includes("War") || element.includes("Sixth")){
+            }else if(element.includes("War") || element.includes("Sixth") || element.includes("Doctorless")){
                 tr += "gold.png\">";
             }else{
                 tr += "red.png\"\>";
@@ -119,7 +120,11 @@ function produceTable(input){
                 output += tr + "<td>\n" + element + "\n</td></tr>\n";
                 topHeader = false;
             }else{
-                output += "</table><br>" + contenttable + tr + "<td>\n" + element + "\n</td></tr>\n";
+                output += "</table>"
+                if(element.includes("Doctorless")){
+                    output += "<br><br><br>";
+                }
+                output += "<br>" + contenttable + tr + "<td>\n" + element + "\n</td></tr>\n";
             }
 
         }else if(element == ""){
