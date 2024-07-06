@@ -3,8 +3,17 @@ const {shell} = require('electron');
 var mammoth = require('mammoth');
 var fs = require("fs");
 
-//Generate HTML
-createHtml();
+//Generate HTML Files
+fs.rmSync("webpages", { recursive: true }, (err) => {});
+fs.mkdirSync("webpages", { recursive: false }, (err) => {});
+fs.readdir("../.indices", (err, files) => {
+    if (err) {
+        return console.log('Unable to scan directory: ' + err);
+    } 
+    files.forEach((file) => {
+        createHtml(file.replace(".docx", ""));
+    });
+});
 
 //Create Electron Window
 function createWindow(){
@@ -22,37 +31,42 @@ function createWindow(){
         shell.openExternal(url);
         return {action: 'deny'};
       });
-    win.loadFile("main.html");
+    win.loadFile("webpages/Main.html");
 }
 
 app.prependListener("window-all-closed", () => {app.quit();});
 
 //Extract From Word Document
-function createHtml(){
-    mammoth.convertToHtml({path: "../.indices/main.docx"})
+function createHtml(filename){
+    mammoth.convertToHtml({path: "../.indices/" + filename + ".docx"})
         .then(function(result){
-            formatOutput(result.value);
-            app.whenReady().then(createWindow);
+            formatOutput(result.value, filename);
+            if(filename == "Main"){
+                app.whenReady().then(createWindow);
+            }
         })
         .catch(function(error) {
             console.error(error);
         });
 }
 
-//Format Extracted Html String
-function formatOutput(input){
-    output = input.replaceAll(/<\/?p>/g, "")                //Remove <p> and </p>
-    .replaceAll("</a><a href=\"", "</a>\n<a href=\"")       //Add \n between <a></a>
-    .replaceAll("</h1>", "</h1>\n")                         //Add \n before <h1>
-    .replaceAll("<ol>", "\n<ol>")                           //Add \n before <ol>
-    .replaceAll("<li>", "\n<li>")                           //Add \n before <li>
-    .replaceAll("</h2>", "</h2>\n")                         //Add \n after <h2>
-    .replaceAll("><h1>", ">\n<h1>")                         //Add \n before <h1> (other than the first one)
-    .replaceAll("><h2>", ">\n<h2>")                         //Add \n before second <h2>
-    .replaceAll("</ol>", "\n</ol>\n")                       //Add \n either side of </ol>
-    .replaceAll(/[^>]*$/gm, "\n$&")                         //Add \n before loose text (and one to everything)
-    .replaceAll(/\n+/g, "\n")                               //Removes blank lines
-    .replaceAll(/^[^<].*/gm, "<p>$&</p>")                   //add a <p> tags to all lines that have no tags
+//Format Extracted HTMl String
+function formatOutput(input, filename){
+    output = input.replaceAll(/<\/?p>/g, "")                            //Remove <p> and </p>
+    .replaceAll("</a><a href=\"", "</a>\n<a href=\"")                   //Add \n between <a></a>
+    .replaceAll("</h1>", "</h1>\n")                                     //Add \n before <h1>
+    .replaceAll("<ol>", "\n<ol>")                                       //Add \n before <ol>
+    .replaceAll("<li>", "\n<li>")                                       //Add \n before <li>
+    .replaceAll("</h2>", "</h2>\n")                                     //Add \n after <h2>
+    .replaceAll("><h1>", ">\n<h1>")                                     //Add \n before <h1> (other than the first one)
+    .replaceAll("><h2>", ">\n<h2>")                                     //Add \n before second <h2>
+    .replaceAll("</ol>", "\n</ol>\n")                                   //Add \n either side of </ol>
+    .replaceAll(/<a id=\"(.*)\"><\/a>/g, "")                            //Remove random <a id> tags
+    .replaceAll(/<a href="..\//g, "$&../")                               //Reassign Links
+    .replaceAll(/[^>]*$/gm, "\n$&")                                     //Add \n before loose text (and one to everything)
+    .replaceAll(/\n+/g, "\n")                                           //Removes blank lines
+    .replaceAll(/^[^<].*/gm, "<p>$&</p>")                               //Add a <p> tags to all lines that have no tags
+    .replaceAll(/"([^\/]*)\.docx"/g, "\"$1.html\" target=\"_self\"")    //Replace index links
     
     //Add Doctor Tags
     .replace("<h1>Second Doctor</h1>", "<h1 id=\"two\">Second Doctor</h1>")
@@ -67,20 +81,21 @@ function formatOutput(input){
     .replace("<h1>Tenth Doctor</h1>", "<h1 id=\"ten\">Tenth Doctor</h1>")
     .replace("<h1>Eleventh Doctor</h1>", "<h1 id=\"eleven\">Eleventh Doctor</h1>")
     .replace("<h1>Twelfth Doctor</h1>", "<h1 id=\"twelve\">Twelfth Doctor</h1>")
-    .replace("<h1>Doctorless</h1>", "<h1 id=\"more\">Doctorless</h1>")
+    .replace("<h1>More</h1>", "<h1 id=\"more\">More</h1>");
     
-    fs.writeFileSync("parse.html", output);
     table = produceTable(output.split("\n"));
-    start = fs.readFileSync("templates/start.html");
+    start = fs.readFileSync("templates/start.html", "utf8");
     end = fs.readFileSync("templates/end.html");
-    fs.writeFileSync("main.html", start + table + end)
+    fs.writeFileSync(("webpages/" + filename + ".html"), start.replace(">Dodex - Main<", ">Dodex - " + filename + "<") + table + end);
 }
 
-//Create Main 
+//Create Central Table
 function produceTable(input){
     indent = 0;
-    topHeader = true;
+    headers = 0;
     contenttable = "<table border=0 style=\"width: 820px;\">\n";
+    bars = ["blue", "pink", "purple", "green", "gold", "red"];
+
     output = contenttable;
     for(const element of input){
         if(element == "<ol>"){
@@ -102,30 +117,33 @@ function produceTable(input){
         }else if(element.startsWith("<li>") || element.startsWith("</li>")){
             output += element + "\n";
         }else if(element.startsWith("<h1")){
-            tr = "<tr background=\"resources/bars/";
-            if(element.includes("First") || element .includes("Fourth") || element.includes("Twelfth")){
-                tr += "blue.png\">";
-            }else if(element.includes("Second") || element.includes("Eleventh")){
-                tr += "pink.png\">";
-            }else if(element.includes("Eighth") || element.includes("Third")){
-                tr += "purple.png\">";
-            }else if(element.includes("Fifth") || element.includes("Tenth")){
-                tr += "green.png\">";
-            }else if(element.includes("War") || element.includes("Sixth") || element.includes("Doctorless")){
-                tr += "gold.png\">";
+            tr = "<tr background=\"../resources/bars/";
+            if(element.includes(">First Doctor<") || element .includes(">Fourth Doctor<") || element.includes(">Twelfth Doctor<")){
+                tr += bars[0];
+            }else if(element.includes(">Second Doctor<") || element.includes(">Eleventh Doctor<")){
+                tr += bars[1];
+            }else if(element.includes(">Eighth Doctor<") || element.includes(">Third Doctor<")){
+                tr += bars[2];
+            }else if(element.includes(">Fifth Doctor<") || element.includes(">Tenth Doctor<")){
+                tr += bars[3];
+            }else if(element.includes(">War Doctor<") || element.includes(">Sixth Doctor<") || element.includes(">More<")){
+                tr += bars[4];
+            }else if(element.includes(">Ninth Doctor<") || element.includes(">Seventh Doctor<")){
+                tr += bars[5];
             }else{
-                tr += "red.png\"\>";
+                tr += bars[headers%bars.length];
             }
-            if (topHeader){
-                output += tr + "<td>\n" + element + "\n</td></tr>\n";
-                topHeader = false;
+
+            if (headers == 0){
+                output += tr + ".png\"><td>\n" + element + "\n</td></tr>\n";
             }else{
                 output += "</table>"
-                if(element.includes("Doctorless")){
+                if(element.includes(">More<")){
                     output += "<br><br><br>";
                 }
-                output += "<br>" + contenttable + tr + "<td>\n" + element + "\n</td></tr>\n";
+                output += "<br>" + contenttable + tr + ".png\"><td>\n" + element + "\n</td></tr>\n";
             }
+            headers++
 
         }else if(element == ""){
             //pass
