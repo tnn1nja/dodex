@@ -4,6 +4,7 @@
     <head>
         <title>Dodex - Daleks</title>
         <base target="_blank">
+        <script src="../runtime.js"></script>
         <style>
             body {
                 font-family: Arial, sans-serif;
@@ -13,6 +14,12 @@
                 min-height: 100vh;
                 display: flex;
                 flex-direction: column;
+            }.random{
+                position: fixed;
+                bottom: 10px;
+                left: 50%;
+                transform: translate(-485px);
+                z-index: 2;
             }footer{
                 margin-top: auto;
             }tr, td {
@@ -52,6 +59,8 @@
                 margin-left: auto;
                 margin-right: auto;
                 box-shadow: 0px 0px 20px -5px;
+                overflow: hidden;
+                border-radius:10px;
             }html {
                 scroll-padding-top: 295px;
             }h1{
@@ -81,13 +90,36 @@
             }p{
                 margin-top: 3px;
                 color:#5f5f5f;
+            }.focus{
+                box-shadow: 0px 0px 20px -5px !important;
+                border: 5px;
+                z-index: 1;
+                position: relative;
+            }tbody tr:nth-child(even).focus{
+                background-image: linear-gradient(to right, #E4E4E4, #414141, #E4E4E4);
+            }tbody tr:nth-child(odd).focus{
+                background-image: linear-gradient(to right, #CFCFCF, #414141, #CFCFCF);
+            }.focus a{
+                color: white;
+            }.focus p{
+                color: #bbbbbb;
+            }.buttonimg{
+                margin: 0 auto;
+                padding: 0;
+                display: block;
+                width:60px;
+                border-radius:50%;
+                background-size:cover;
+                box-shadow: 0px 0px 20px -5px;
+                cursor: pointer;
+            }.buttonimg:hover{
+                box-shadow: 0px 0px 26px -5px;
             }
         </style>
-        
     </head>
     <body style="margin: 0px">
         <!--Top Bar-->
-        <table border=0 style="margin-top: 0; position: sticky; top: 0; z-index: 2;">
+        <table border=0 style="margin-top: 0; position: sticky; top: 0; z-index: 3; border-top-right-radius: 0; border-top-left-radius: 0;">
             <tr class="doctor">
                 <td width="90px" height="90px" style="padding: 0">
                     <a href=Main.html#top target="_self"><img src= "../resources/doctors/one.png"></img></a>
@@ -139,19 +171,19 @@
 <tr background="../resources/bars/blue.png"><td>
 <h1>Dalek Empire</h1>
 </td></tr>
-<tr><td>
+<tr id="tr1"><td>
 <a href="../../Big%20Finish/Dalek%20Empire/1.1%20-%20Invasion%20of%20the%20Daleks.mp3">Invasion of the Daleks</a>
 </td></tr>
-<tr><td>
+<tr id="tr2"><td>
 <a href="../../Big%20Finish/Dalek%20Empire/1.2%20-%20The%20Human%20Factor.mp3">The Human Factor</a>
 </td></tr>
-<tr><td>
+<tr id="tr3"><td>
 <a href="../../Big%20Finish/Dalek%20Empire/1.3%20-%20Death%20to%20the%20Daleks!.mp3">Death to the Daleks!</a>
 </td></tr>
-<tr><td>
+<tr id="tr4"><td>
 <a href="../../Big%20Finish/Dalek%20Empire/1.4%20-%20Project%20Infinity.mp3">Project Infinity</a>
 </td></tr>
-<tr><td><p>Dalek War</p>
+<tr id="tr5"><td><p>Dalek War</p>
 <ol>
 <li><a href="../../Big%20Finish/Dalek%20Empire/2.1%20-%20Dalek%20War%20Chapter%201.mp3">Chapter 1</a></li>
 <li><a href="../../Big%20Finish/Dalek%20Empire/2.2%20-%20Dalek%20War%20Chapter%202.mp3">Chapter 2</a></li>
@@ -162,26 +194,38 @@
 <tr background="../resources/bars/pink.png"><td>
 <h1>I, Davros</h1>
 </td></tr>
-<tr><td>
+<tr id="tr6"><td>
 <a href="../../Big%20Finish/I,%20Davros/1.1%20-%20Innocence.mp3">Innocence</a>
 </td></tr>
-<tr><td>
+<tr id="tr7"><td>
 <a href="../../Big%20Finish/I,%20Davros/1.2%20-%20Purity.mp3">Purity</a>
 </td></tr>
-<tr><td>
+<tr id="tr8"><td>
 <a href="../../Big%20Finish/I,%20Davros/1.3%20-%20Corruption.mp3">Corruption</a>
 </td></tr>
-<tr><td>
+<tr id="tr9"><td>
 <a href="../../Big%20Finish/I,%20Davros/1.4%20-%20Guilt.mp3">Guilt</a>
 </td></tr>
-<tr><td>
+<tr id="tr10"><td>
 <a href="../../Big%20Finish/I,%20Davros/2.0%20-%20The%20Davros%20Mission.mp3">The Davros Mission</a>
 </td></tr>
 </table><br><table border=0 style="width: 820px;">
 <tr background="../resources/bars/purple.png"><td>
-<h1>Other</h1>
+<h1>Timeline</h1>
 </td></tr>
-<tr><td><p>The Daleks</p>
+<tr id="tr11"><td>
+<a href="file:///D:\Big%20Finish\I,%20Davros\1.4%20-%20Guilt.mp3">Guilt</a>
+</td></tr>
+<tr id="tr12"><td><p>Genesis of the Daleks</p>
+<ol>
+<li><a href="https://www.bbc.co.uk/iplayer/episode/p00vd5g2/doctor-who-19631996-season-12-genesis-of-the-daleks-part-1?seriesId=p00pq2dc">Part One</a></li>
+<li><a href="https://www.bbc.co.uk/iplayer/episode/p00vd5kw/doctor-who-19631996-season-12-genesis-of-the-daleks-part-2?seriesId=p00pq2dc">Part Two</a></li>
+<li><a href="https://www.bbc.co.uk/iplayer/episode/p00vd5q4/doctor-who-19631996-season-12-genesis-of-the-daleks-part-3?seriesId=p00pq2dc">Part Three</a></li>
+<li><a href="https://www.bbc.co.uk/iplayer/episode/p00vd5tr/doctor-who-19631996-season-12-genesis-of-the-daleks-part-4?seriesId=p00pq2dc">Part Four</a></li>
+<li><a href="https://www.bbc.co.uk/iplayer/episode/p00vd5wk/doctor-who-19631996-season-12-genesis-of-the-daleks-part-5?seriesId=p00pq2dc">Part Five</a></li>
+<li><a href="https://www.bbc.co.uk/iplayer/episode/p00vd5xy/doctor-who-19631996-season-12-genesis-of-the-daleks-part-6?seriesId=p00pq2dc">Part Six</a></li>
+</ol>
+<tr id="tr13"><td><p>The Daleks</p>
 <ol>
 <li><a href="https://www.bbc.co.uk/iplayer/episode/b009w0ll/doctor-who-19631996-season-1-the-daleks-the-dead-planet">The Dead Planet</a></li>
 <li><a href="https://www.bbc.co.uk/iplayer/episode/b009w0ln/doctor-who-19631996-season-1-the-daleks-the-survivors?seriesId=b009x51p">The Survivors</a></li>
@@ -191,7 +235,7 @@
 <li><a href="https://www.bbc.co.uk/iplayer/episode/b009w16n/doctor-who-19631996-season-1-the-daleks-the-ordeal?seriesId=b009x51p">The Ordeal</a></li>
 <li><a href="https://www.bbc.co.uk/iplayer/episode/b009w31v/doctor-who-19631996-season-1-the-daleks-the-rescue?seriesId=b009x51p">The Rescue</a></li>
 </ol>
-<tr><td><p>The Dalek Invasion of Earth</p>
+<tr id="tr14"><td><p>The Dalek Invasion of Earth</p>
 <ol>
 <li><a href="https://www.bbc.co.uk/iplayer/episode/p00v1qf2/doctor-who-19631996-season-2-the-dalek-invasion-of-earth-worlds-end?seriesId=p00kl3tj&amp;page=1">World’s End</a></li>
 <li><a href="https://www.bbc.co.uk/iplayer/episode/p00v1qft/doctor-who-19631996-season-2-the-dalek-invasion-of-earth-the-daleks?seriesId=p00kl3tj&amp;page=1">The Daleks</a></li>
@@ -200,7 +244,13 @@
 <li><a href="https://www.bbc.co.uk/iplayer/episode/p00v1qhv/doctor-who-19631996-season-2-the-dalek-invasion-of-earth-the-waking-ally?seriesId=p00kl3tj&amp;page=1">The Walking Ally</a></li>
 <li><a href="https://www.bbc.co.uk/iplayer/episode/p00v1qjm/doctor-who-19631996-season-2-the-dalek-invasion-of-earth-flashpoint?seriesId=p00kl3tj&amp;page=1">Flashpoint</a></li>
 </ol>
-<tr><td><p>The Chase</p>
+<tr id="tr15"><td>
+<a href="file:///D:\Big%20Finish\Early%20Adventures\7.1%20-%20After%20the%20Daleks.m4b">After the Daleks</a>
+</td></tr>
+<tr id="tr16"><td>
+<a href="file:///D:\Big%20Finish\Stageplays\3%20-%20The%20Curse%20of%20the%20Daleks.mp3">The Curse of the Daleks</a>
+</td></tr>
+<tr id="tr17"><td><p>The Chase</p>
 <ol>
 <li><a href="https://www.bbc.co.uk/iplayer/episode/p00v23c8/doctor-who-19631996-season-2-the-chase-the-executioners?seriesId=p00kl3tj&amp;page=1">The Executioners</a></li>
 <li><a href="https://www.bbc.co.uk/iplayer/episode/p00v23m0/doctor-who-19631996-season-2-the-chase-the-death-of-time?seriesId=p00kl3tj&amp;page=1">The Death of Time</a></li>
@@ -208,9 +258,23 @@
 <li><a href="https://www.bbc.co.uk/iplayer/episode/p00v23sy/doctor-who-19631996-season-2-the-chase-journey-into-terror?seriesId=p00kl3tj&amp;page=1">Journey into Terror</a></li>
 <li><a href="https://www.bbc.co.uk/iplayer/episode/p00v23tv/doctor-who-19631996-season-2-the-chase-the-death-of-dr-who?seriesId=p00kl3tj&amp;page=1">The Death of Doctor Who</a></li>
 <li><a href="https://www.bbc.co.uk/iplayer/episode/p00v23w9/doctor-who-19631996-season-2-the-chase-the-planet-of-decision?seriesId=p00kl3tj&amp;page=1">The Planet of Decision</a></li>
-<li><a href="https://archive.org/details/doctor-who-loose-cannon-reconstructions/Doctor+Who+-+Loose+Cannon+Reconstructions+of+Lost+Episodes/19+-+Mission+to+the+Unknown/Doctor+Who+-+019+-+TA+-+Mission+to+the+Unknown+-+01+-+Mission+to+the+Unknown+-+Recon.mp4">Mission to the Unknown</a></li>
 </ol>
-<tr><td><p>Daleks’ Master Plan</p>
+<tr id="tr18"><td>
+<a href="https://archive.org/details/doctor-who-loose-cannon-reconstructions/Doctor+Who+-+Loose+Cannon+Reconstructions+of+Lost+Episodes/19+-+Mission+to+the+Unknown/Doctor+Who+-+019+-+TA+-+Mission+to+the+Unknown+-+01+-+Mission+to+the+Unknown+-+Recon.mp4">Mission to the Unknown</a>
+</td></tr>
+<tr id="tr19"><td>
+<a href="file:///D:\Big%20Finish\Companion%20Chronicles\11.2%20-%20Across%20the%20Darkened%20City.m4b">Across the Darkened City</a>
+</td></tr>
+<tr id="tr20"><td>
+<a href="file:///D:\Big%20Finish\Early%20Adventures\5.1%20-%20The%20Dalek%20Occupation%20of%20Winter.m4b">The Dalek Occupation of Winter</a>
+</td></tr>
+<tr id="tr21"><td>
+<a href="https://archive.org/details/doctor-who-loose-cannon-reconstructions/Doctor+Who+-+Loose+Cannon+Reconstructions+of+Lost+Episodes/19+-+Mission+to+the+Unknown/Doctor+Who+-+019+-+TA+-+Mission+to+the+Unknown+-+01+-+Mission+to+the+Unknown+-+Recon.mp4">Mission to the Unknown</a>
+</td></tr>
+<tr id="tr22"><td>
+<a href="file:///D:\Big%20Finish\Early%20Adventures\6.2%20-%20Daughter%20of%20the%20Gods.m4b">Daughter of the Gods</a>
+</td></tr>
+<tr id="tr23"><td><p>Daleks’ Master Plan</p>
 <ol>
 <li><a href="https://archive.org/details/doctor-who-loose-cannon-reconstructions/Doctor+Who+-+Loose+Cannon+Reconstructions+of+Lost+Episodes/21+-+The+Daleks'+Master+Plan/Doctor+Who+-+021+-+V+-+The+Daleks'+Master+Plan+-+01+-+The+Nightmare+Begins+-+Recon.mp4">The Nightmare Begins</a></li>
 <li><a href="https://www.bbc.co.uk/iplayer/episode/p00v251q/doctor-who-19631996-season-3-the-daleks-master-plan-day-of-armageddon?seriesId=p00km1bv">Day of Armageddon</a></li>
@@ -225,7 +289,14 @@
 <li><a href="https://archive.org/details/doctor-who-loose-cannon-reconstructions/Doctor+Who+-+Loose+Cannon+Reconstructions+of+Lost+Episodes/21+-+The+Daleks'+Master+Plan/Doctor+Who+-+021+-+V+-+The+Daleks'+Master+Plan+-+11+-+The+Abandoned+Planet+-+Recon.mp4">The Abandoned Planet</a></li>
 <li><a href="https://archive.org/details/doctor-who-loose-cannon-reconstructions/Doctor+Who+-+Loose+Cannon+Reconstructions+of+Lost+Episodes/21+-+The+Daleks'+Master+Plan/Doctor+Who+-+021+-+V+-+The+Daleks'+Master+Plan+-+12+-+Destruction+of+Time+-+Recon.mp4">Destruction of Time</a></li>
 </ol>
-<tr><td><p>The Power of the Daleks</p>
+<tr id="tr24"><td><p>Death to the Daleks</p>
+<ol>
+<li><a href="https://www.bbc.co.uk/iplayer/episode/p00v7bkd/doctor-who-19631996-season-11-death-to-the-daleks-part-1?seriesId=p00pn9fq">Part One</a></li>
+<li><a href="https://www.bbc.co.uk/iplayer/episode/p00v7bp6/doctor-who-19631996-season-11-death-to-the-daleks-part-2?seriesId=p00pn9fq">Part Two</a></li>
+<li><a href="https://www.bbc.co.uk/iplayer/episode/p00v7br0/doctor-who-19631996-season-11-death-to-the-daleks-part-3?seriesId=p00pn9fq">Part Three</a></li>
+<li><a href="https://www.bbc.co.uk/iplayer/episode/p00v7by2/doctor-who-19631996-season-11-death-to-the-daleks-part-4?seriesId=p00pn9fq">Part Four</a></li>
+</ol>
+<tr id="tr25"><td><p>The Power of the Daleks</p>
 <ol>
 <li><a href="https://archive.org/details/doctor-who-loose-cannon-reconstructions/Doctor+Who+-+Loose+Cannon+Reconstructions+of+Lost+Episodes/30+-+The+Power+of+the+Daleks/Doctor+Who+-+030+-+EE+-+The+Power+of+the+Daleks+-+01+-+Recon.mp4">Episode One</a></li>
 <li><a href="https://archive.org/details/doctor-who-loose-cannon-reconstructions/Doctor+Who+-+Loose+Cannon+Reconstructions+of+Lost+Episodes/30+-+The+Power+of+the+Daleks/Doctor+Who+-+030+-+EE+-+The+Power+of+the+Daleks+-+02+-+Recon.mp4">Episode Two</a></li>
@@ -234,7 +305,7 @@
 <li><a href="https://archive.org/details/doctor-who-loose-cannon-reconstructions/Doctor+Who+-+Loose+Cannon+Reconstructions+of+Lost+Episodes/30+-+The+Power+of+the+Daleks/Doctor+Who+-+030+-+EE+-+The+Power+of+the+Daleks+-+05+-+Recon.mp4">Episode Five</a></li>
 <li><a href="https://archive.org/details/doctor-who-loose-cannon-reconstructions/Doctor+Who+-+Loose+Cannon+Reconstructions+of+Lost+Episodes/30+-+The+Power+of+the+Daleks/Doctor+Who+-+030+-+EE+-+The+Power+of+the+Daleks+-+06+-+Recon.mp4">Episode Six</a></li>
 </ol>
-<tr><td><p>The Evil of the Daleks</p>
+<tr id="tr26"><td><p>The Evil of the Daleks</p>
 <ol>
 <li><a href="https://archive.org/details/doctor-who-loose-cannon-reconstructions/Doctor+Who+-+Loose+Cannon+Reconstructions+of+Lost+Episodes/36+-+The+Evil+of+the+Daleks/Doctor+Who+-+036+-+LL+-+The+Evil+of+the+Daleks+-+01+-+Recon.mp4">Episode 1</a></li>
 <li><a href="https://www.bbc.co.uk/iplayer/episode/p00v30nn/doctor-who-19631996-the-evil-of-the-daleks-episode-2?seriesId=p0ggwr8l-unindexed">Episode 2</a></li>
@@ -244,14 +315,23 @@
 <li><a href="https://archive.org/details/doctor-who-loose-cannon-reconstructions/Doctor+Who+-+Loose+Cannon+Reconstructions+of+Lost+Episodes/36+-+The+Evil+of+the+Daleks/Doctor+Who+-+036+-+LL+-+The+Evil+of+the+Daleks+-+06+-+Recon.mp4">Episode 6</a></li>
 <li><a href="https://archive.org/details/doctor-who-loose-cannon-reconstructions/Doctor+Who+-+Loose+Cannon+Reconstructions+of+Lost+Episodes/36+-+The+Evil+of+the+Daleks/Doctor+Who+-+036+-+LL+-+The+Evil+of+the+Daleks+-+07+-+Recon.mp4">Episode 7</a></li>
 </ol>
-<tr><td><p>Day of the Daleks</p>
+<tr id="tr27"><td><p>Day of the Daleks</p>
 <ol>
 <li><a href="https://www.bbc.co.uk/iplayer/episode/p00v78w1/doctor-who-19631996-season-9-day-of-the-daleks-episode-1?seriesId=p00pl3fw">Episode One</a></li>
 <li><a href="https://www.bbc.co.uk/iplayer/episode/p00v78y0/doctor-who-19631996-season-9-day-of-the-daleks-episode-2?seriesId=p00pl3fw">Episode Two</a></li>
 <li><a href="https://www.bbc.co.uk/iplayer/episode/p00v78yw/doctor-who-19631996-season-9-day-of-the-daleks-episode-3?seriesId=p00pl3fw">Episode Three</a></li>
 <li><a href="https://www.bbc.co.uk/iplayer/episode/p00v78zq/doctor-who-19631996-season-9-day-of-the-daleks-episode-4?seriesId=p00pl3fw">Episode Four</a></li>
 </ol>
-<tr><td><p>Planet of the Daleks</p>
+<tr id="tr28"><td><p>Frontier in Space</p>
+<ol>
+<li><a href="https://www.bbc.co.uk/iplayer/episode/p00v8syk/doctor-who-19631996-season-10-frontier-in-space-episode-1?seriesId=p00pn824">Episode One</a></li>
+<li><a href="https://www.bbc.co.uk/iplayer/episode/p00v8trt/doctor-who-19631996-season-10-frontier-in-space-episode-2?seriesId=p00pn824">Episode Two</a></li>
+<li><a href="https://www.bbc.co.uk/iplayer/episode/p00v8tvh/doctor-who-19631996-season-10-frontier-in-space-episode-3?seriesId=p00pn824">Episode Three</a></li>
+<li><a href="https://www.bbc.co.uk/iplayer/episode/p00v8tyt/doctor-who-19631996-season-10-frontier-in-space-episode-4?seriesId=p00pn824">Episode Four</a></li>
+<li><a href="https://www.bbc.co.uk/iplayer/episode/p00v8v7g/doctor-who-19631996-season-10-frontier-in-space-episode-5?seriesId=p00pn824">Episode Five</a></li>
+<li><a href="https://www.bbc.co.uk/iplayer/episode/p00v8vby/doctor-who-19631996-season-10-frontier-in-space-episode-6?seriesId=p00pn824">Episode Six</a></li>
+</ol>
+<tr id="tr29"><td><p>Planet of the Daleks</p>
 <ol>
 <li><a href="https://www.bbc.co.uk/iplayer/episode/p00v8vkg/doctor-who-19631996-season-10-planet-of-the-daleks-episode-1?seriesId=p00pn824">Episode One</a></li>
 <li><a href="https://www.bbc.co.uk/iplayer/episode/p00v8vrs/doctor-who-19631996-season-10-planet-of-the-daleks-episode-2?seriesId=p00pn824">Episode Two</a></li>
@@ -260,281 +340,291 @@
 <li><a href="https://www.bbc.co.uk/iplayer/episode/p00v8w1n/doctor-who-19631996-season-10-planet-of-the-daleks-episode-5?seriesId=p00pn824">Episode Five</a></li>
 <li><a href="https://www.bbc.co.uk/iplayer/episode/p00v8wgf/doctor-who-19631996-season-10-planet-of-the-daleks-episode-6?seriesId=p00pn824">Episode Six</a></li>
 </ol>
-<tr><td><p>Death to the Daleks</p>
-<ol>
-<li><a href="https://www.bbc.co.uk/iplayer/episode/p00v7bkd/doctor-who-19631996-season-11-death-to-the-daleks-part-1?seriesId=p00pn9fq">Part One</a></li>
-<li><a href="https://www.bbc.co.uk/iplayer/episode/p00v7bp6/doctor-who-19631996-season-11-death-to-the-daleks-part-2?seriesId=p00pn9fq">Part Two</a></li>
-<li><a href="https://www.bbc.co.uk/iplayer/episode/p00v7br0/doctor-who-19631996-season-11-death-to-the-daleks-part-3?seriesId=p00pn9fq">Part Three</a></li>
-<li><a href="https://www.bbc.co.uk/iplayer/episode/p00v7by2/doctor-who-19631996-season-11-death-to-the-daleks-part-4?seriesId=p00pn9fq">Part Four</a></li>
-</ol>
-<tr><td><p>Genesis of the Daleks</p>
-<ol>
-<li><a href="https://www.bbc.co.uk/iplayer/episode/p00vd5g2/doctor-who-19631996-season-12-genesis-of-the-daleks-part-1?seriesId=p00pq2dc">Part One</a></li>
-<li><a href="https://www.bbc.co.uk/iplayer/episode/p00vd5kw/doctor-who-19631996-season-12-genesis-of-the-daleks-part-2?seriesId=p00pq2dc">Part Two</a></li>
-<li><a href="https://www.bbc.co.uk/iplayer/episode/p00vd5q4/doctor-who-19631996-season-12-genesis-of-the-daleks-part-3?seriesId=p00pq2dc">Part Three</a></li>
-<li><a href="https://www.bbc.co.uk/iplayer/episode/p00vd5tr/doctor-who-19631996-season-12-genesis-of-the-daleks-part-4?seriesId=p00pq2dc">Part Four</a></li>
-<li><a href="https://www.bbc.co.uk/iplayer/episode/p00vd5wk/doctor-who-19631996-season-12-genesis-of-the-daleks-part-5?seriesId=p00pq2dc">Part Five</a></li>
-<li><a href="https://www.bbc.co.uk/iplayer/episode/p00vd5xy/doctor-who-19631996-season-12-genesis-of-the-daleks-part-6?seriesId=p00pq2dc">Part Six</a></li>
-</ol>
-<tr><td><p>Destiny of the Daleks</p>
+<tr id="tr30"><td>
+<a href="file:///D:\Big%20Finish\04%20-%20Fourth%20Doctor%20Adventures\01.4%20-%20Energy%20of%20the%20Daleks.mp3">Energy of the Daleks</a>
+</td></tr>
+<tr id="tr31"><td><p>Destiny of the Daleks</p>
 <ol>
 <li><a href="https://www.bbc.co.uk/iplayer/episode/p00vh9l1/doctor-who-19631996-season-17-destiny-of-the-daleks-part-1?seriesId=p00rm61q">Episode One</a></li>
 <li><a href="https://www.bbc.co.uk/iplayer/episode/p00vh9nn/doctor-who-19631996-season-17-destiny-of-the-daleks-part-2?seriesId=p00rm61q">Episode Two</a></li>
 <li><a href="https://www.bbc.co.uk/iplayer/episode/p00vh9r4/doctor-who-19631996-season-17-destiny-of-the-daleks-part-3?seriesId=p00rm61q">Episode Three</a></li>
 <li><a href="https://www.bbc.co.uk/iplayer/episode/p00vh9t8/doctor-who-19631996-season-17-destiny-of-the-daleks-part-4?seriesId=p00rm61q">Episode Four</a></li>
 </ol>
-<tr><td>
+<tr id="tr32"><td>
 <a href="https://www.bbc.co.uk/iplayer/episode/p00t8v7g/doctor-who-19631996-the-five-doctors-special?seriesId=p0318pqy">The Five Doctors</a>
 </td></tr>
-<tr><td><p>Resurrection of the Daleks</p>
+<tr id="tr33"><td><p>Resurrection of the Daleks</p>
 <ol>
 <li><a href="https://www.bbc.co.uk/iplayer/episode/p00v8yw4/doctor-who-19631996-season-21-resurrection-of-the-daleks-part-1?seriesId=p00sx3q2">Part One</a></li>
 <li><a href="https://www.bbc.co.uk/iplayer/episode/p00v8yxr/doctor-who-19631996-season-21-resurrection-of-the-daleks-part-2?seriesId=p00sx3q2">Part Two</a></li>
 </ol>
-<tr><td><p>Revelation of the Daleks</p>
+<tr id="tr34"><td><p>Revelation of the Daleks</p>
 <ol>
 <li><a href="https://www.bbc.co.uk/iplayer/episode/p00vbc69/doctor-who-19631996-season-22-revelation-of-the-daleks-part-1?seriesId=p00sx4xc">Part One</a></li>
 <li><a href="https://www.bbc.co.uk/iplayer/episode/p00vbc8h/doctor-who-19631996-season-22-revelation-of-the-daleks-part-2?seriesId=p00sx4xc">Part Two</a></li>
 </ol>
-<tr><td><p>Remembrance of the Daleks</p>
+<tr id="tr35"><td>
+<a href="file:///D:\Big%20Finish\I,%20Davros\2.0%20-%20The%20Davros%20Mission.mp3">The Davros Mission</a>
+</td></tr>
+<tr id="tr36"><td>
+<a href="file:///D:\Big%20Finish\I,%20Davros\1.1%20-%20Innocence.mp3">Innocence</a>
+</td></tr>
+<tr id="tr37"><td>
+<a href="file:///D:\Big%20Finish\I,%20Davros\1.2%20-%20Purity.mp3">Purity</a>
+</td></tr>
+<tr id="tr38"><td>
+<a href="file:///D:\Big%20Finish\I,%20Davros\1.3%20-%20Corruption.mp3">Corruption</a>
+</td></tr>
+<tr id="tr39"><td>
+<a href="file:///D:\Big%20Finish\I,%20Davros\1.4%20-%20Guilt.mp3">Guilt</a>
+</td></tr>
+<tr id="tr40"><td>
+<a href="file:///D:\Big%20Finish\Main%20Range\065%20-%20The%20Juggernauts.m4b">The Juggernauts</a>
+</td></tr>
+<tr id="tr41"><td>
+<a href="file:///D:\Big%20Finish\Main%20Range\040%20-%20Jubilee.mp3">Jubilee</a>
+</td></tr>
+<tr id="tr42"><td>
+<a href="file:///D:\Big%20Finish\Stageplays\1%20-%20The%20Ultimate%20Adventure.mp3">The Ultimate Adventure</a>
+</td></tr>
+<tr id="tr43"><td><p>Remembrance of the Daleks</p>
 <ol>
 <li><a href="https://www.bbc.co.uk/iplayer/episode/p00v91lj/doctor-who-19631996-season-25-remembrance-of-the-daleks-part-1?seriesId=p00t7gt3">Part One</a></li>
 <li><a href="https://www.bbc.co.uk/iplayer/episode/p00v91nb/doctor-who-19631996-season-25-remembrance-of-the-daleks-part-2?seriesId=p00t7gt3">Part Two</a></li>
 <li><a href="https://www.bbc.co.uk/iplayer/episode/p00v91pg/doctor-who-19631996-season-25-remembrance-of-the-daleks-part-3?seriesId=p00t7gt3">Part Three</a></li>
 <li><a href="https://www.bbc.co.uk/iplayer/episode/p00v91t1/doctor-who-19631996-season-25-remembrance-of-the-daleks-part-4?seriesId=p00t7gt3">Part Four</a></li>
 </ol>
-<tr><td>
-<a href="https://www.bbc.co.uk/iplayer/episode/b0074dq8/doctor-who-20052022-series-1-6-dalek?seriesId=b007vvcq">Dalek</a>
-</td></tr>
-<tr><td>
-<a href="https://www.bbc.co.uk/iplayer/episode/b0074dth/doctor-who-20052022-series-1-12-bad-wolf?seriesId=b007vvcq">Bad Wolf</a>
-</td></tr>
-<tr><td>
-<a href="https://www.bbc.co.uk/iplayer/episode/b0074dv1/doctor-who-20052022-series-1-13-the-parting-of-the-ways?seriesId=b007vvcq">Parting of the Ways</a>
-</td></tr>
-<tr><td>
-<a href="https://www.bbc.co.uk/iplayer/episode/b0074fqz/doctor-who-20052022-series-2-12-army-of-ghosts?seriesId=b006v18m">Army of Ghosts</a>
-</td></tr>
-<tr><td>
-<a href="https://www.bbc.co.uk/iplayer/episode/b0074frg/doctor-who-20052022-series-2-13-doomsday?seriesId=b006v18m">Doomsday</a>
-</td></tr>
-<tr><td>
-<a href="https://www.bbc.co.uk/iplayer/episode/b0079mgg/doctor-who-20052022-series-3-4-daleks-in-manhattan?seriesId=b006v193">Daleks in Manhattan</a>
-</td></tr>
-<tr><td>
-<a href="https://www.bbc.co.uk/iplayer/episode/b0079t3d/doctor-who-20052022-series-3-5-evolution-of-the-daleks?seriesId=b006v193">Evolution of the Daleks</a>
-</td></tr>
-<tr><td>
-<a href="https://www.bbc.co.uk/iplayer/episode/b00cccvg/doctor-who-20052022-series-4-12-the-stolen-earth?seriesId=b009wxzy">The Stolen Earth</a>
-</td></tr>
-<tr><td>
-<a href="https://www.bbc.co.uk/iplayer/episode/b00cgnjr/doctor-who-20052022-series-4-13-journeys-end?seriesId=b009wxzy">Journey’s End</a>
-</td></tr>
-<tr><td>
-<a href="https://www.bbc.co.uk/iplayer/episode/b00s56d2/doctor-who-20052022-series-5-3-victory-of-the-daleks">Victory of the Daleks</a>
-</td></tr>
-<tr><td>
-<a href="https://www.bbc.co.uk/iplayer/episode/b00stv7m/doctor-who-20052022-series-5-12-the-pandorica-opens?seriesId=b00rs69w">The Pandorica Opens</a>
-</td></tr>
-<tr><td>
-<a href="https://www.bbc.co.uk/iplayer/episode/b00sxfc7/doctor-who-20052022-series-5-13-the-big-bang?seriesId=b00rs69w">The Big Bang</a>
-</td></tr>
-<tr><td>
-<a href="https://www.bbc.co.uk/iplayer/episode/b015p5kc/doctor-who-20052022-series-6-13-the-wedding-of-river-song?seriesId=b0103y2x">The Wedding of River Song</a>
-</td></tr>
-<tr><td>
-<a href="https://www.bbc.co.uk/iplayer/episode/p00wqr14/doctor-who-20052022-series-7-1-asylum-of-the-daleks?seriesId=p00wqr12">Asylum of the Daleks</a>
-</td></tr>
-<tr><td>
-<a href="https://www.bbc.co.uk/iplayer/episode/p01l1z04/doctor-who-20052022-the-day-of-the-doctor?seriesId=p00wqr12">The Day of the Doctor</a>
-</td></tr>
-<tr><td>
-<a href="https://www.bbc.co.uk/iplayer/episode/p01mj6k8/doctor-who-20052022-the-time-of-the-doctor?seriesId=p00wqr12">The Time of the Doctor</a>
-</td></tr>
-<tr><td>
-<a href="https://www.bbc.co.uk/iplayer/episode/b04grqgx/doctor-who-20052022-series-8-2-into-the-dalek?seriesId=p023w977">Into the Dalek</a>
-</td></tr>
-<tr><td>
-<a href="https://www.bbc.co.uk/iplayer/episode/b06dpx8x/doctor-who-20052022-series-9-1-the-magicians-apprentice?seriesId=b06f2y7r">The Magician’s Apprentice</a>
-</td></tr>
-<tr><td>
-<a href="https://www.bbc.co.uk/iplayer/episode/b06fq0z9/doctor-who-20052022-series-9-2-the-witchs-familiar?seriesId=b06f2y7r">The Witch’s Familiar</a>
-</td></tr>
-<tr><td>
+<tr id="tr44"><td>
 <a href="file:///D:\Big%20Finish\Main%20Range\007%20-%20The%20Genocide%20Machine.mp3">The Genocide Machine</a>
 </td></tr>
-<tr><td>
+<tr id="tr45"><td>
 <a href="file:///D:\Big%20Finish\Main%20Range\011%20-%20The%20Apocalypse%20Element.mp3">The Apocalypse Element</a>
 </td></tr>
-<tr><td>
+<tr id="tr46"><td>
 <a href="file:///D:\Big%20Finish\Main%20Range\015%20-%20The%20Mutant%20Phase.mp3">The Mutant Phase</a>
 </td></tr>
-<tr><td>
-<a href="file:///D:\Big%20Finish\Main%20Range\021%20-%20Dust%20Breeding.mp3">Dust Breeding</a>
-</td></tr>
-<tr><td>
+<tr id="tr47"><td>
 <a href="file:///D:\Big%20Finish\Main%20Range\032%20-%20The%20Time%20of%20the%20Daleks.mp3">The Time of the Daleks</a>
 </td></tr>
-<tr><td>
+<tr id="tr48"><td>
 <a href="file:///D:\Big%20Finish\Main%20Range\033%20-%20Neverland.mp3">Neverland</a>
 </td></tr>
-<tr><td>
-<a href="file:///D:\Big%20Finish\Main%20Range\040%20-%20Jubilee.mp3">Jubilee</a>
+<tr id="tr49"><td>
+<a href="file:///D:\Big%20Finish\Dalek%20Empire\1.1%20-%20Invasion%20of%20the%20Daleks.mp3">Invasion of the Daleks</a>
 </td></tr>
-<tr><td>
-<a href="file:///D:\Big%20Finish\Main%20Range\065%20-%20The%20Juggernauts.m4b">The Juggernauts</a>
+<tr id="tr50"><td>
+<a href="file:///D:\Big%20Finish\Dalek%20Empire\1.2%20-%20The%20Human%20Factor.mp3">The Human Factor</a>
 </td></tr>
-<tr><td>
-<a href="file:///D:\Big%20Finish\Stageplays\1%20-%20The%20Ultimate%20Adventure.mp3">The Ultimate Adventure</a>
+<tr id="tr51"><td>
+<a href="file:///D:\Big%20Finish\Dalek%20Empire\1.3%20-%20Death%20to%20the%20Daleks!.mp3">Death to the Daleks!</a>
 </td></tr>
-<tr><td>
-<a href="../../Big%20Finish/Stageplays/2%20-%20Seven%20Keys%20to%20Doomsday.mp3">Seven Keys to Doomsday</a>
+<tr id="tr52"><td>
+<a href="file:///D:\Big%20Finish\Dalek%20Empire\1.4%20-%20Project%20Infinity.mp3">Project Infinity</a>
 </td></tr>
-<tr><td>
-<a href="../../Big%20Finish/Stageplays/3%20-%20The%20Curse%20of%20the%20Daleks.mp3">The Curse of the Daleks</a>
-</td></tr>
-<tr><td>
-<a href="file:///D:\Big%20Finish\Companion%20Chronicles\11.2%20-%20Across%20the%20Darkened%20City.m4b">Across the Darkened City</a>
-</td></tr>
-<tr><td>
-<a href="D:\\Big Finish\\Early Adventures\\3.4 - The Sontarans.m4b">The Sontarans</a>
-</td></tr>
-<tr><td>
-<a href="file:///D:\Big%20Finish\Early%20Adventures\5.1%20-%20The%20Dalek%20Occupation%20of%20Winter.m4b">The Dalek Occupation of Winter</a>
-</td></tr>
-<tr><td>
-<a href="file:///D:\Big%20Finish\Early%20Adventures\6.2%20-%20Daughter%20of%20the%20Gods.m4b">Daughter of the Gods</a>
-</td></tr>
-<tr><td>
-<a href="../../Big%20Finish/Early%20Adventures/7.1%20-%20After%20the%20Daleks.m4b">After the Daleks</a>
-</td></tr>
-<tr><td>
-<a href="file:///D:\Big%20Finish\04%20-%20Fourth%20Doctor%20Adventures\01.4%20-%20Energy%20of%20the%20Daleks.mp3">Energy of the Daleks</a>
-</td></tr>
-<tr><td>
+<tr id="tr53"><td><p>Dalek War</p>
+<ol>
+<li><a href="file:///D:\Big%20Finish\Dalek%20Empire\2.1%20-%20Dalek%20War%20Chapter%201.mp3">Chapter 1</a></li>
+<li><a href="file:///D:\Big%20Finish\Dalek%20Empire\2.2%20-%20Dalek%20War%20Chapter%202.mp3">Chapter 2</a></li>
+<li><a href="file:///D:\Big%20Finish\Dalek%20Empire\2.3%20-%20Dalek%20War%20Chapter%203.mp3">Chapter 3</a></li>
+<li><a href="file:///D:\Big%20Finish\Dalek%20Empire\2.4%20-%20Dalek%20War%20Chapter%204.mp3">Chapter 4</a></li>
+</ol>
+<tr id="tr54"><td>
 <a href="file:///D:\Big%20Finish\08%20-%20Eighth%20Doctor%20Adventures\8.1%20-%20The%20Eighth%20Doctor%20and%20Lucie%20Miller\1.1%20-%20Blood%20of%20the%20Daleks%20Part%201.mp3">Blood of the Daleks Part 1</a>
 </td></tr>
-<tr><td>
+<tr id="tr55"><td>
 <a href="file:///D:\Big%20Finish\08%20-%20Eighth%20Doctor%20Adventures\8.1%20-%20The%20Eighth%20Doctor%20and%20Lucie%20Miller\1.2%20-%20Blood%20of%20the%20Daleks%20Part%202.mp3">Blood of the Daleks Part 2</a>
 </td></tr>
-<tr><td>
-<a href="D:\\Big Finish\\08 - Eighth Doctor Adventures\\8.1 - The Eighth Doctor and Lucie Miller\\4.09 - Lucie Miller.m4b">Lucie Miller</a>
+<tr id="tr56"><td>
+<a href="file:///D:\Big%20Finish\08%20-%20Eighth%20Doctor%20Adventures\8.X%20-%20Bonus\Further%20Adventures%20of%20Lucy%20Miller\1.1%20-%20The%20Dalek%20Trap.m4b">The Dalek Trap</a>
 </td></tr>
-<tr><td>
+<tr id="tr57"><td>
+<a href="../../Big%20Finish/08%20-%20Eighth%20Doctor%20Adventures/8.1%20-%20The%20Eighth%20Doctor%20and%20Lucie%20Miller/4.09%20-%20Lucie%20Miller.m4b">Lucie Miller</a>
+</td></tr>
+<tr id="tr58"><td>
 <a href="D:\\Big Finish\\08 - Eighth Doctor Adventures\\8.1 - The Eighth Doctor and Lucie Miller\\4.10 - To the Death.m4b">To the Death</a>
 </td></tr>
-<tr><td>
+<tr id="tr59"><td>
 <a href="D:\\Big Finish\\08 - Eighth Doctor Adventures\\8.2 - Dark Eyes\\1.1 - The Great War.m4b">The Great War</a>
 </td></tr>
-<tr><td>
+<tr id="tr60"><td>
 <a href="D:\\Big Finish\\08 - Eighth Doctor Adventures\\8.2 - Dark Eyes\\1.2 - Fugitives.m4b">Fugitives</a>
 </td></tr>
-<tr><td>
+<tr id="tr61"><td>
 <a href="D:\\Big Finish\\08 - Eighth Doctor Adventures\\8.2 - Dark Eyes\\1.3 - Tangled Web.m4b">Tangled Web</a>
 </td></tr>
-<tr><td>
+<tr id="tr62"><td>
 <a href="D:\\Big Finish\\08 - Eighth Doctor Adventures\\8.2 - Dark Eyes\\1.4 X - and the Daleks.m4b">X and the Daleks</a>
 </td></tr>
-<tr><td>
+<tr id="tr63"><td>
 <a href="D:\\Big Finish\\08 - Eighth Doctor Adventures\\8.2 - Dark Eyes\\2.1 - The Traitor.m4b">The Traitor</a>
 </td></tr>
-<tr><td>
+<tr id="tr64"><td>
 <a href="file:///D:\Big%20Finish\08%20-%20Eighth%20Doctor%20Adventures\8.2%20-%20Dark%20Eyes\2.3%20-%20Time's%20Horizon.m4b">Time’s Horizon</a>
 </td></tr>
-<tr><td>
+<tr id="tr65"><td>
 <a href="file:///D:\Big%20Finish\08%20-%20Eighth%20Doctor%20Adventures\8.2%20-%20Dark%20Eyes\2.4%20-%20Eyes%20of%20the%20Master.m4b">Eyes of the Master</a>
 </td></tr>
-<tr><td>
+<tr id="tr66"><td>
 <a href="file:///D:\Big%20Finish\08%20-%20Eighth%20Doctor%20Adventures\8.2%20-%20Dark%20Eyes\4.2%20-%20The%20Monster%20of%20Montmartre.m4b">The Monsters of Montmartre</a>
 </td></tr>
-<tr><td>
+<tr id="tr67"><td>
 <a href="file:///D:\Big%20Finish\08%20-%20Eighth%20Doctor%20Adventures\8.2%20-%20Dark%20Eyes\4.3%20-%20Master%20of%20the%20Daleks.m4b">Master of the Daleks</a>
 </td></tr>
-<tr><td>
+<tr id="tr68"><td>
 <a href="file:///D:\Big%20Finish\08%20-%20Eighth%20Doctor%20Adventures\8.2%20-%20Dark%20Eyes\4.4%20-%20Eye%20of%20Darkness.m4b">Eye of Darkness</a>
 </td></tr>
-<tr><td>
+<tr id="tr69"><td>
 <a href="file:///D:\Big%20Finish\08%20-%20Eighth%20Doctor%20Adventures\8.W%20-%20Time%20War\1.1%20-%20The%20Starship%20of%20Theseus.m4b">The Starship of Theseus</a>
 </td></tr>
-<tr><td>
+<tr id="tr70"><td>
 <a href="file:///D:\Big%20Finish\08%20-%20Eighth%20Doctor%20Adventures\8.W%20-%20Time%20War\1.2%20-%20Echoes%20of%20War.m4b">Echoes of War</a>
 </td></tr>
-<tr><td>
+<tr id="tr71"><td>
 <a href="file:///D:\Big%20Finish\08%20-%20Eighth%20Doctor%20Adventures\8.W%20-%20Time%20War\1.3%20-%20The%20Conscript.m4b">The Conscript</a>
 </td></tr>
-<tr><td>
+<tr id="tr72"><td>
 <a href="file:///D:\Big%20Finish\08%20-%20Eighth%20Doctor%20Adventures\8.W%20-%20Time%20War\1.4%20-%20One%20Life.m4b">One Life</a>
 </td></tr>
-<tr><td>
+<tr id="tr73"><td>
 <a href="file:///D:\Big%20Finish\08%20-%20Eighth%20Doctor%20Adventures\8.W%20-%20Time%20War\2.1%20-%20The%20Lords%20of%20Terror.m4b">The Lords of Terror</a>
 </td></tr>
-<tr><td>
+<tr id="tr74"><td>
 <a href="file:///D:\Big%20Finish\08%20-%20Eighth%20Doctor%20Adventures\8.W%20-%20Time%20War\2.2%20-%20Planet%20of%20the%20Ogrons.m4b">The Planet of the Ogrons</a>
 </td></tr>
-<tr><td>
+<tr id="tr75"><td>
 <a href="file:///D:\Big%20Finish\08%20-%20Eighth%20Doctor%20Adventures\8.W%20-%20Time%20War\2.3%20-%20In%20the%20Garden%20of%20Death.m4b">In The Garden of Death</a>
 </td></tr>
-<tr><td>
+<tr id="tr76"><td>
 <a href="file:///D:\Big%20Finish\08%20-%20Eighth%20Doctor%20Adventures\8.W%20-%20Time%20War\2.4%20-%20Jonah.m4b">Jonah</a>
 </td></tr>
-<tr><td>
+<tr id="tr77"><td>
 <a href="file:///D:\Big%20Finish\08%20-%20Eighth%20Doctor%20Adventures\8.W%20-%20Time%20War\3.3%20-%20Fugitive%20in%20Time.m4b">Fugitive in Time</a>
 </td></tr>
-<tr><td>
+<tr id="tr78"><td>
 <a href="file:///D:\Big%20Finish\08%20-%20Eighth%20Doctor%20Adventures\8.W%20-%20Time%20War\3.4%20-%20The%20War%20Valeyard.m4b">The War Valeyard</a>
 </td></tr>
-<tr><td>
+<tr id="tr79"><td>
 <a href="file:///D:\Big%20Finish\08%20-%20Eighth%20Doctor%20Adventures\8.W%20-%20Time%20War\4.1%20Palindrome.m4b">Palindrome</a>
 </td></tr>
-<tr><td>
+<tr id="tr80"><td>
 <a href="file:///D:\Big%20Finish\08%20-%20Eighth%20Doctor%20Adventures\8.W%20-%20Time%20War\4.3%20-%20%20Restoration%20of%20the%20Daleks.m4b">Restoration of the Daleks</a>
 </td></tr>
-<tr><td>
-<a href="file:///D:\Big%20Finish\08%20-%20Eighth%20Doctor%20Adventures\8.W%20-%20Time%20War\5.1%20-%20Meanwhile%20Elsewhere.m4b">Meanwhile, Elsewhere</a>
-</td></tr>
-<tr><td>
-<a href="file:///D:\Big%20Finish\08%20-%20Eighth%20Doctor%20Adventures\8.W%20-%20Time%20War\5.3%20-%20Previously%20Next%20Time.m4b">Previously, Next Time</a>
-</td></tr>
-<tr><td>
+<tr id="tr81"><td>
 <a href="D:\\Big Finish\\08.5 - The War Doctor\\1 - Only the Monstrous\\1.1 - The Innocent.m4b">The Innocent</a>
 </td></tr>
-<tr><td>
+<tr id="tr82"><td>
 <a href="D:\\Big Finish\\08.5 - The War Doctor\\1 - Only the Monstrous\\1.2 - The Thousand Worlds.m4b">The Thousand Worlds</a>
 </td></tr>
-<tr><td>
+<tr id="tr83"><td>
 <a href="D:\\Big Finish\\08.5 - The War Doctor\\1 - Only the Monstrous\\1.3 - The Heart of the Battle.m4b">The Heart of the Battle</a>
 </td></tr>
-<tr><td>
+<tr id="tr84"><td>
 <a href="file:///D:\Big%20Finish\08.5%20-%20The%20War%20Doctor\2%20-%20Infernal%20Devices\2.1%20-%20Legion%20of%20the%20Lost.m4b">Legion of the Lost</a>
 </td></tr>
-<tr><td>
+<tr id="tr85"><td>
 <a href="D:\\Big Finish\\08.5 - The War Doctor\\2 - Infernal Devices\\2.2 - A Thing of Guile.m4b">A Thing of Guile</a>
 </td></tr>
-<tr><td>
+<tr id="tr86"><td>
 <a href="file:///D:\Big%20Finish\08.5%20-%20The%20War%20Doctor\2%20-%20Infernal%20Devices\2.3%20-%20The%20Neverwhen.m4b">The Neverwhen</a>
 </td></tr>
-<tr><td>
+<tr id="tr87"><td>
 <a href="file:///D:\Big%20Finish\08.5%20-%20The%20War%20Doctor\3%20-%20Agents%20of%20Chaos\3.1%20-%20The%20Shadow%20Vortex.m4b">The Shadow Vortex</a>
 </td></tr>
-<tr><td>
+<tr id="tr88"><td>
 <a href="file:///D:\Big%20Finish\08.5%20-%20The%20War%20Doctor\3%20-%20Agents%20of%20Chaos\3.2%20-%20The%20Eternity%20Cage.m4b">The Eternity Cage</a>
 </td></tr>
-<tr><td>
+<tr id="tr89"><td>
 <a href="file:///D:\Big%20Finish\08.5%20-%20The%20War%20Doctor\3%20-%20Agents%20of%20Chaos\3.3%20-%20Eye%20of%20Harmony.m4b">Eye of Harmony</a>
 </td></tr>
-<tr><td>
+<tr id="tr90"><td>
 <a href="file:///D:\Big%20Finish\08.5%20-%20The%20War%20Doctor\4%20-%20Casualties%20of%20War\4.1%20-%20Pretty%20Lies.m4b">Pretty Lies</a>
 </td></tr>
-<tr><td>
+<tr id="tr91"><td>
 <a href="file:///D:\Big%20Finish\08.5%20-%20The%20War%20Doctor\4%20-%20Casualties%20of%20War\4.2%20-%20The%20Lady%20of%20Obsidian.m4b">The Lady of Obsidian</a>
 </td></tr>
-<tr><td>
+<tr id="tr92"><td>
 <a href="file:///D:\Big%20Finish\08.5%20-%20The%20War%20Doctor\4%20-%20Casualties%20of%20War\4.3%20-%20The%20Enigma%20Dimension.m4b">Enigma Dimension</a>
 </td></tr>
-<tr><td>
-<a href="../../Big%20Finish/War%20Master/1.1%20-%20Beneath%20the%20Viscoid%20(free%20download).m4b">Beneath the Viscord</a>
+<tr id="tr93"><td>
+<a href="file:///D:\Big%20Finish\War%20Master\1.1%20-%20Beneath%20the%20Viscoid%20(free%20download).m4b">Beneath the Viscord</a>
 </td></tr>
-</table>    <footer>
+<tr id="tr94"><td>
+<a href="https://www.bbc.co.uk/iplayer/episode/p01l1z04/doctor-who-20052022-the-day-of-the-doctor?seriesId=p00wqr12">The Day of the Doctor</a>
+</td></tr>
+<tr id="tr95"><td>
+<a href="https://www.bbc.co.uk/iplayer/episode/b0074dq8/doctor-who-20052022-series-1-6-dalek?seriesId=b007vvcq">Dalek</a>
+</td></tr>
+<tr id="tr96"><td>
+<a href="https://www.bbc.co.uk/iplayer/episode/b0074dth/doctor-who-20052022-series-1-12-bad-wolf?seriesId=b007vvcq">Bad Wolf</a>
+</td></tr>
+<tr id="tr97"><td>
+<a href="https://www.bbc.co.uk/iplayer/episode/b0074dv1/doctor-who-20052022-series-1-13-the-parting-of-the-ways?seriesId=b007vvcq">Parting of the Ways</a>
+</td></tr>
+<tr id="tr98"><td>
+<a href="https://www.bbc.co.uk/iplayer/episode/b0074fqz/doctor-who-20052022-series-2-12-army-of-ghosts?seriesId=b006v18m">Army of Ghosts</a>
+</td></tr>
+<tr id="tr99"><td>
+<a href="https://www.bbc.co.uk/iplayer/episode/b0074frg/doctor-who-20052022-series-2-13-doomsday?seriesId=b006v18m">Doomsday</a>
+</td></tr>
+<tr id="tr100"><td>
+<a href="https://www.bbc.co.uk/iplayer/episode/b0079mgg/doctor-who-20052022-series-3-4-daleks-in-manhattan?seriesId=b006v193">Daleks in Manhattan</a>
+</td></tr>
+<tr id="tr101"><td>
+<a href="https://www.bbc.co.uk/iplayer/episode/b0079t3d/doctor-who-20052022-series-3-5-evolution-of-the-daleks?seriesId=b006v193">Evolution of the Daleks</a>
+</td></tr>
+<tr id="tr102"><td>
+<a href="https://www.bbc.co.uk/iplayer/episode/b00cccvg/doctor-who-20052022-series-4-12-the-stolen-earth?seriesId=b009wxzy">The Stolen Earth</a>
+</td></tr>
+<tr id="tr103"><td>
+<a href="https://www.bbc.co.uk/iplayer/episode/b00cgnjr/doctor-who-20052022-series-4-13-journeys-end?seriesId=b009wxzy">Journey’s End</a>
+</td></tr>
+<tr id="tr104"><td>
+<a href="https://www.bbc.co.uk/iplayer/episode/b00s56d2/doctor-who-20052022-series-5-3-victory-of-the-daleks">Victory of the Daleks</a>
+</td></tr>
+<tr id="tr105"><td>
+<a href="https://www.bbc.co.uk/iplayer/episode/b00stv7m/doctor-who-20052022-series-5-12-the-pandorica-opens?seriesId=b00rs69w">The Pandorica Opens</a>
+</td></tr>
+<tr id="tr106"><td>
+<a href="https://www.bbc.co.uk/iplayer/episode/b00sxfc7/doctor-who-20052022-series-5-13-the-big-bang?seriesId=b00rs69w">The Big Bang</a>
+</td></tr>
+<tr id="tr107"><td>
+<a href="https://www.bbc.co.uk/iplayer/episode/b015p5kc/doctor-who-20052022-series-6-13-the-wedding-of-river-song?seriesId=b0103y2x">The Wedding of River Song</a>
+</td></tr>
+<tr id="tr108"><td>
+<a href="https://www.bbc.co.uk/iplayer/episode/p00wqr14/doctor-who-20052022-series-7-1-asylum-of-the-daleks?seriesId=p00wqr12">Asylum of the Daleks</a>
+</td></tr>
+<tr id="tr109"><td>
+<a href="https://www.bbc.co.uk/iplayer/episode/p01mj6k8/doctor-who-20052022-the-time-of-the-doctor?seriesId=p00wqr12">The Time of the Doctor</a>
+</td></tr>
+<tr id="tr110"><td>
+<a href="https://www.bbc.co.uk/iplayer/episode/b04grqgx/doctor-who-20052022-series-8-2-into-the-dalek?seriesId=p023w977">Into the Dalek</a>
+</td></tr>
+<tr id="tr111"><td>
+<a href="https://www.bbc.co.uk/iplayer/episode/b06dpx8x/doctor-who-20052022-series-9-1-the-magicians-apprentice?seriesId=b06f2y7r">The Magician’s Apprentice</a>
+</td></tr>
+<tr id="tr112"><td>
+<a href="https://www.bbc.co.uk/iplayer/episode/b06fq0z9/doctor-who-20052022-series-9-2-the-witchs-familiar?seriesId=b06f2y7r">The Witch’s Familiar</a>
+</td></tr>
+</table><br><table border=0 style="width: 820px;">
+<tr background="../resources/bars/green.png"><td>
+<h1>Other</h1>
+</td></tr>
+<tr id="tr113"><td>
+<a href="../../Big%20Finish/Stageplays/2%20-%20Seven%20Keys%20to%20Doomsday.mp3">Seven Keys to Doomsday</a>
+</td></tr>
+<tr id="tr114"><td>
+<a href="file:///D:\Big%20Finish\Early%20Adventures\3.4%20-%20The%20Sontarans.m4b">The Sontarans</a> <a href="file:///D:\Big%20Finish\08%20-%20Eighth%20Doctor%20Adventures\8.W%20-%20Time%20War\5.1%20-%20Meanwhile%20Elsewhere.m4b">Meanwhile, Elsewhere</a>
+</td></tr>
+<tr id="tr115"><td>
+<a href="file:///D:\Big%20Finish\08%20-%20Eighth%20Doctor%20Adventures\8.W%20-%20Time%20War\5.3%20-%20Previously%20Next%20Time.m4b">Previously, Next Time</a>
+</td></tr>
+</table>
+<script>function getMaxTr(){ return 115}</script>
+    <div class="random">
+        <img class="buttonimg" style="border-bottom-right-radius: 0; border-bottom-left-radius: 0;" onclick="selectRandom()"src="../resources/buttons/random.png"></img>
+        <img class="buttonimg" style="border-top-right-radius: 0; border-top-left-radius: 0;" onclick="clearSelection()" src="../resources/buttons/cancel.png"></img>
+    </div>
+    <footer>
         <p style="color: #e4e4e4dc; text-align: right; padding-top: 10px; padding-right: 20px;">'Dodex' Created by tnn1nja: <a class="github" style="color: #008bad" href="https://github.com/tnn1nja/dodex">https://github.com/tnn1nja/dodex</a></p>
     </footer>
     </body>

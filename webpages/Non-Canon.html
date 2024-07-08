@@ -4,6 +4,7 @@
     <head>
         <title>Dodex - Non-Canon</title>
         <base target="_blank">
+        <script src="../runtime.js"></script>
         <style>
             body {
                 font-family: Arial, sans-serif;
@@ -13,6 +14,12 @@
                 min-height: 100vh;
                 display: flex;
                 flex-direction: column;
+            }.random{
+                position: fixed;
+                bottom: 10px;
+                left: 50%;
+                transform: translate(-485px);
+                z-index: 2;
             }footer{
                 margin-top: auto;
             }tr, td {
@@ -52,6 +59,8 @@
                 margin-left: auto;
                 margin-right: auto;
                 box-shadow: 0px 0px 20px -5px;
+                overflow: hidden;
+                border-radius:10px;
             }html {
                 scroll-padding-top: 295px;
             }h1{
@@ -81,13 +90,36 @@
             }p{
                 margin-top: 3px;
                 color:#5f5f5f;
+            }.focus{
+                box-shadow: 0px 0px 20px -5px !important;
+                border: 5px;
+                z-index: 1;
+                position: relative;
+            }tbody tr:nth-child(even).focus{
+                background-image: linear-gradient(to right, #E4E4E4, #414141, #E4E4E4);
+            }tbody tr:nth-child(odd).focus{
+                background-image: linear-gradient(to right, #CFCFCF, #414141, #CFCFCF);
+            }.focus a{
+                color: white;
+            }.focus p{
+                color: #bbbbbb;
+            }.buttonimg{
+                margin: 0 auto;
+                padding: 0;
+                display: block;
+                width:60px;
+                border-radius:50%;
+                background-size:cover;
+                box-shadow: 0px 0px 20px -5px;
+                cursor: pointer;
+            }.buttonimg:hover{
+                box-shadow: 0px 0px 26px -5px;
             }
         </style>
-        
     </head>
     <body style="margin: 0px">
         <!--Top Bar-->
-        <table border=0 style="margin-top: 0; position: sticky; top: 0; z-index: 2;">
+        <table border=0 style="margin-top: 0; position: sticky; top: 0; z-index: 3; border-top-right-radius: 0; border-top-left-radius: 0;">
             <tr class="doctor">
                 <td width="90px" height="90px" style="padding: 0">
                     <a href=Main.html#top target="_self"><img src= "../resources/doctors/one.png"></img></a>
@@ -139,10 +171,23 @@
 <tr background="../resources/bars/blue.png"><td>
 <h1>Unbound</h1>
 </td></tr>
-<tr><td>
+<tr id="tr1"><td>
 <a href="../../Big%20Finish/Unbound/4%20-%20He%20Jests%20at%20Scars....m4b">He Jests at Scars</a>
 </td></tr>
-</table>    <footer>
+</table><br><table border=0 style="width: 820px;">
+<tr background="../resources/bars/pink.png"><td>
+<h1>Other</h1>
+</td></tr>
+<tr id="tr2"><td>
+<a href="../../Big%20Finish/Stageplays/2%20-%20Seven%20Keys%20to%20Doomsday.mp3">Seven Keys to Doomsday</a>
+</td></tr>
+</table>
+<script>function getMaxTr(){ return 2}</script>
+    <div class="random">
+        <img class="buttonimg" style="border-bottom-right-radius: 0; border-bottom-left-radius: 0;" onclick="selectRandom()"src="../resources/buttons/random.png"></img>
+        <img class="buttonimg" style="border-top-right-radius: 0; border-top-left-radius: 0;" onclick="clearSelection()" src="../resources/buttons/cancel.png"></img>
+    </div>
+    <footer>
         <p style="color: #e4e4e4dc; text-align: right; padding-top: 10px; padding-right: 20px;">'Dodex' Created by tnn1nja: <a class="github" style="color: #008bad" href="https://github.com/tnn1nja/dodex">https://github.com/tnn1nja/dodex</a></p>
     </footer>
     </body>

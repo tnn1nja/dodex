@@ -91,6 +91,7 @@ function formatOutput(input, filename){
 
 //Create Central Table
 function produceTable(input){
+    trCounter = 1;
     indent = 0;
     headers = 0;
     contenttable = "<table border=0 style=\"width: 820px;\">\n";
@@ -98,12 +99,14 @@ function produceTable(input){
 
     output = contenttable;
     for(const element of input){
+        trid = "id=\"tr" + trCounter + "\""
         if(element == "<ol>"){
             output += "<ol>\n";
             indent++;
         }else if(element.startsWith("<p>")){
             if(indent==0){
-                output += "<tr><td>" + element + "\n";
+                output += "<tr " + trid + "><td>" + element + "\n";
+                trCounter++
             }else{
                 output += element + "\n";
             }
@@ -147,11 +150,15 @@ function produceTable(input){
 
         }else if(element == ""){
             //pass
+        }else if(element.startsWith("<h2")){
+            output += "<tr><td>\n" + element + "\n</td></tr>\n"
         }else{
-            output += "<tr><td>\n" + element + "\n</td></tr>\n";
+            output += "<tr " + trid + "><td>\n" + element + "\n</td></tr>\n";
+            trCounter++
         }
     }
     output += "</table>";
-
+    trCounter--
+    output += "\n<script>function getMaxTr(){ return " + trCounter + "}</script>\n"
     return output;
 }
