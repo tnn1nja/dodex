@@ -16,7 +16,7 @@
                 flex-direction: column;
             }.random{
                 position: fixed;
-                bottom: 10px;
+                bottom: 25px;
                 left: 50%;
                 transform: translate(-485px);
                 z-index: 2;
@@ -96,13 +96,13 @@
                 z-index: 1;
                 position: relative;
             }tbody tr:nth-child(even).focus{
-                background-image: linear-gradient(to right, #E4E4E4, #414141, #E4E4E4);
+                background-image: linear-gradient(to right, #E4E4E4, #333333, #E4E4E4);
             }tbody tr:nth-child(odd).focus{
-                background-image: linear-gradient(to right, #CFCFCF, #414141, #CFCFCF);
+                background-image: linear-gradient(to right, #CFCFCF, #333333, #CFCFCF);
             }.focus a{
                 color: white;
             }.focus p{
-                color: #bbbbbb;
+                color: #d8d7d7;
             }.buttonimg{
                 margin: 0 auto;
                 padding: 0;
@@ -229,8 +229,7 @@
 </table>
 <script>function getMaxTr(){ return 12}</script>
     <div class="random">
-        <img class="buttonimg" style="border-bottom-right-radius: 0; border-bottom-left-radius: 0;" onclick="selectRandom()"src="../resources/buttons/random.png"></img>
-        <img class="buttonimg" style="border-top-right-radius: 0; border-top-left-radius: 0;" onclick="clearSelection()" src="../resources/buttons/cancel.png"></img>
+        <img id="bimg" class="buttonimg" onmouseenter="toggleOnButton()" onmouseleave="toggleOnButton()" onclick="random()" src="../resources/buttons/random.png"></img>
     </div>
     <footer>
         <p style="color: #e4e4e4dc; text-align: right; padding-top: 10px; padding-right: 20px;">'Dodex' Created by tnn1nja: <a class="github" style="color: #008bad" href="https://github.com/tnn1nja/dodex">https://github.com/tnn1nja/dodex</a></p>
