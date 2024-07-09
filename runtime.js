@@ -18,19 +18,16 @@ function click(){
 }
 
 function random(){
-    if(focused == null){
-        const rand = Math.floor(Math.random() * (getMaxTr())) + 1
-        focused = document.getElementById("tr" + rand)
-        focused.classList.add("focus")
-        focused.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        document.getElementById("bimg").src = "../resources/buttons/cancel.png";
-    }else{
-        clear();
-    }
+    clear();
+    const rand = Math.floor(Math.random() * (getMaxTr())) + 1
+    focused = document.getElementById("tr" + rand)
+    focused.classList.add("focus")
+    focused.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
 function clear(){
-    focused.classList.remove("focus");
-    focused = null;
-    document.getElementById("bimg").src = "../resources/buttons/random.png";
+    if(focused != null){
+        focused.classList.remove("focus");
+        focused = null;
+    }
 }
