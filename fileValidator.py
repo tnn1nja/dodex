@@ -9,7 +9,7 @@ def getInvalid(extracted):
         formatted[0] = formatted[0].replace("%20", " ")
         formatted[1] = formatted[1].replace("â€™", "'").replace("&amp;", "&")
         if not formatted[0].startswith("https://"):
-            if not os.path.exists(formatted[0]):
+            if (not os.path.exists(formatted[0])) or formatted[0].startswith("D:"):
                 invalid.add(formatted[1])
     return invalid
 
@@ -23,5 +23,6 @@ for filename in os.listdir():
         print("\n" + filename.replace(".html", "") + ": \n")
         for link in invalid:
             print("\t" + link)
+    f.close()
 
 input("\nPress ENTER to exit...")
